@@ -15,13 +15,15 @@ import javax.jws.WebService;
 public interface CustomerWebService {
 
     @WebMethod
-    Boolean registerCustomer(@WebParam(name="customer_first_name") String customer_firstName,
-                  @WebParam(name="customer_last_name") String customer_lastName,
-                  @WebParam(name="customer_adress") String customer_adress) throws AlreadyExistingCustomerException;
-
-
+    Boolean registerCustomer(@WebParam(name = "customer_first_name") String customer_firstName,
+                             @WebParam(name = "customer_last_name") String customer_lastName,
+                             @WebParam(name = "customer_adress") String customer_adress) throws AlreadyExistingCustomerException;
 
     @WebMethod
     @WebResult(name = "customer_find")
-    Customer findCustomer(@WebParam(name="customer_name") String customerName) throws UnknownCustomerException;
+    Customer findCustomer(@WebParam(name = "customer_name") String customerName) throws UnknownCustomerException;
+
+    @WebMethod
+    @WebResult(name = "delete_all")
+    boolean deleteAll();
 }

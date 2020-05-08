@@ -14,13 +14,15 @@ import javax.jws.WebService;
 @Stateless(name = "CustomerWS")
 public class CustomerWebServiceImp implements CustomerWebService {
 
-    @EJB private CustomerFinder customerFinder;
-    @EJB private CustomerRegistration customerRegistration;
+    @EJB
+    private CustomerFinder customerFinder;
+    @EJB
+    private CustomerRegistration customerRegistration;
 
     @Override
-    public Boolean registerCustomer(String customer_firstName,String customer_lastName,String customer_adress) throws AlreadyExistingCustomerException {
+    public Boolean registerCustomer(String customer_firstName, String customer_lastName, String customer_adress) throws AlreadyExistingCustomerException {
         System.out.println("registerCustomer");
-        return customerRegistration.registerCustomer(customer_firstName,customer_lastName,customer_adress);
+        return customerRegistration.registerCustomer(customer_firstName, customer_lastName, customer_adress);
     }
 
     @Override
@@ -29,5 +31,10 @@ public class CustomerWebServiceImp implements CustomerWebService {
         return customerFinder.findCustomerByName(customerName);
     }
 
+    @Override
+    public boolean deleteAll() {
+        System.out.println("deleteAll");
+        return customerFinder.deleteAll();
+    }
 
 }
